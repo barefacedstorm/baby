@@ -79,6 +79,7 @@ To save captured packets to PCAP files during continuous capture:
 ```css
 sudo python cli.py capture -i <interface> --continuous -o /path/to/output/directory
 ```
+![image](https://github.com/user-attachments/assets/bf3e4e4b-e08d-4dbe-b357-988573d441b1)
 
 This will:
 
