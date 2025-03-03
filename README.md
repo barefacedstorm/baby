@@ -1,5 +1,7 @@
 A lightweight deep packet inspection tool for network traffic analysis
 
+![image](https://github.com/user-attachments/assets/d6dbb29b-181e-458b-beab-46e344f8a9e8)
+
 ## Description
 
 Baby DPI is a lightweight tool for network traffic capture, protocol detection, and basic intrusion prevention system (IPS) capabilities. It helps you capture and analyze network packets from interfaces or PCAP files.
