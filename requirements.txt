@@ -1,6 +1,14 @@
 # Core networking
 scapy>=2.4.5
 dpkt>=1.9.7
+netifaces>=0.11.0
+
+# Web interface dependencies
+Flask>=2.0.1
+Werkzeug>=2.0.1
+Jinja2>=3.0.1
+itsdangerous>=2.0.1
+click>=8.0.1
 
 # Network utilities (these should work with Py3.12)
 netaddr>=0.8.0
@@ -15,6 +23,11 @@ colorama>=0.4.4
 pyyaml>=6.0
 
 # Development
-pytest>=7.0.0
-black>=23.1.0
-EOL
+# pytest>=7.0.0
+# black>=23.1.0
+
+# Optional but recommended dependencies
+# colorama>=0.4.4  # For colored terminal output
+# pytest>=6.2.5    # For testing
+# pylint>=2.8.3    # For code quality
+# ipython>=7.26.0  # For interactive debugging
