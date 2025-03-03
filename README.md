@@ -40,6 +40,20 @@ Baby DPI is a lightweight tool for network traffic capture, protocol detection, 
     pip install -e .
     ```
 
+## Web Interface
+
+Baby DPI includes a web-based interface for packet capture and IPS monitoring.
+
+### Running the Web Server
+
+The web interface requires root/administrative privileges to capture packets:
+
+```bash
+# On Linux/macOS
+sudo python server.py
+
+# On Windows (with admin privileges)
+python -m web.server
 
 ## Basic Usage
 
@@ -55,6 +69,28 @@ sudo python cli.py capture -i <interface> -c 100
 ```
 
 This will capture 100 packets from the specified interface.
+
+Accessing the Web Interface
+Once the server is running, access the web interface at:
+
+http://localhost:5001
+
+
+Web Interface Features
+Dashboard: Overview of packet capture and IPS statistics
+Packet Capture: Capture and analyze packets from network interfaces
+IPS Engine: Monitor network traffic for potential threats
+Real-time Updates: See packet statistics and protocol distribution in real-time
+Continuous Mode: Run capture or IPS continuously until manually stopped
+Web Server Configuration
+The web server runs on port 5001 by default. You can change this by setting the PORT environment variable:
+
+# On Linux/macOS
+sudo PORT=XXXX python server.py
+
+# On Windows
+set PORT=XXXX
+python server.py
 
 ### Reading from PCAP File
 

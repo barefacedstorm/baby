@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPS Engine - Baby DPI</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Baby DPI</h1>
+            <p class="tagline">Lightweight Network Traffic Analysis Tool</p>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/capture">Packet Capture</a></li>
+                <li><a href="/ips" class="active">IPS Engine</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <section class="ips-config">
+                <h2>Intrusion Prevention System</h2>
+
+                <div class="config-panel">
+                    <div class="form-group">
+                        <label for="ips-interface">Network Interface:</label>
+                        <select id="ips-interface">
+                            <option value="">Select an interface</option>
+                            {% for iface in interfaces %}
+                            <option value="{{ iface }}">{{ iface }}</option>
+                            {% endfor %}
+                        </select>
+                        <button id="refresh-ips-interfaces" class="btn-small">Refresh</button>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ips-continuous">
+                            <input type="checkbox" id="ips-continuous" checked>
+                            Continuous Mode
+                        </label>
+                        <span class="help-text">Run until manually stopped</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ips-output-dir">Output Directory for Suspicious Packets (optional):</label>
+                        <input type="text" id="ips-output-dir" placeholder="/path/to/save/suspicious">
+                        <span class="help-text">Directory to save suspicious PCAP files</span>
+                    </div>
+
+                    <div class="form-group actions">
+                        <button id="start-ips" class="btn">Start IPS</button>
+                        <button id="stop-ips" class="btn btn-danger" disabled>Stop IPS</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="ips-rules">
+                <h3>Active Rules</h3>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Rule Name</th>
+                                <th>Severity</th>
+                                <th>Action</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>ssh_scan</td>
+                                <td><span class="severity-badge level-3">3</span></td>
+                                <td>Alert</td>
+                                <td>Potential SSH scan detected</td>
+                            </tr>
+                            <tr>
+                                <td>http_exploit</td>
+                                <td><span class="severity-badge level-5">5</span></td>
+                                <td>Drop</td>
+                                <td>Potential HTTP exploitation attempt</td>
+                            </tr>
+                            <tr>
+                                <td>dns_tunneling</td>
+                                <td><span class="severity-badge level-4">4</span></td>
+                                <td>Alert</td>
+                                <td>Potential DNS tunneling detected</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="alerts">
+                <h3>Alerts</h3>
+                <div class="alert-stats">
+                    <div class="stat-card">
+                        <div class="stat-value" id="total-alerts">0</div>
+                        <div class="stat-label">Total Alerts</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="high-severity">0</div>
+                        <div class="stat-label">High Severity</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="medium-severity">0</div>
+                        <div class="stat-label">Medium Severity</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="low-severity">0</div>
+                        <div class="stat-label">Low Severity</div>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Rule</th>
+                                <th>Severity</th>
+                                <th>Source IP</th>
+                                <th>Destination IP</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody id="alerts-table-body">
+                            <!-- Alert data will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2025 Baby DPI Tool. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+    <script src="/static/js/ips.js"></script>
+</body>
+</html>

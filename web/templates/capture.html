@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Packet Capture - Baby DPI</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Baby DPI</h1>
+            <p class="tagline">Lightweight Network Traffic Analysis Tool</p>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/capture" class="active">Packet Capture</a></li>
+                <li><a href="/ips">IPS Engine</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <section class="capture-config">
+                <h2>Packet Capture Configuration</h2>
+
+                <div class="config-panel">
+                    <div class="form-group">
+                        <label for="interface">Network Interface:</label>
+                        <select id="interface">
+                            <option value="">Select an interface</option>
+                            {% for iface in interfaces %}
+                            <option value="{{ iface }}">{{ iface }}</option>
+                            {% endfor %}
+                        </select>
+                        <button id="refresh-interfaces" class="btn-small">Refresh</button>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="count">Packet Count:</label>
+                        <input type="number" id="count" value="0" min="1">
+                        <span class="help-text">Number of packets to capture (ignored in continuous mode)</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="continuous">
+                            <input type="checkbox" id="continuous" checked>
+                            Continuous Mode
+                        </label>
+                        <span class="help-text">Run until manually stopped</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="output-dir">Output Directory (optional):</label>
+                        <input type="text" id="output-dir" placeholder="/path/to/save/pcaps">
+                        <span class="help-text">Directory to save PCAP files</span>
+                    </div>
+
+                    <div class="form-group actions">
+                        <button id="start-capture" class="btn">Start Capture</button>
+                        <button id="stop-capture" class="btn btn-danger" disabled>Stop Capture</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="results">
+                <div class="status-panel">
+                    <div class="status-indicator">
+                        <span class="status-label">Status:</span>
+                        <span id="capture-status" class="status-value">Idle</span>
+                    </div>
+                    <div class="status-indicator">
+                        <span class="status-label">Packets Captured:</span>
+                        <span id="packet-count" class="status-value">0</span>
+                    </div>
+                    <div class="status-indicator">
+                        <span class="status-label">Duration:</span>
+                        <span id="capture-duration" class="status-value">00:00:00</span>
+                    </div>
+                </div>
+
+                <div class="results-container">
+                    <h3>Protocol Distribution</h3>
+                    <div class="chart-container">
+                        <canvas id="protocol-chart"></canvas>
+                    </div>
+
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Protocol</th>
+                                    <th>Count</th>
+                                    <th>Percentage</th>
+                                </tr>
+                            </thead>
+                            <tbody id="protocol-table-body">
+                                <!-- Protocol data will be inserted here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Baby DPI Tool. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/static/js/app.js"></script>
+    <script src="/static/js/capture.js"></script>
+</body>
+</html>

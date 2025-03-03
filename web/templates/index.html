@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baby DPI - Network Traffic Analysis Tool</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Baby DPI</h1>
+            <p class="tagline">Lightweight Network Traffic Analysis Tool</p>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="/" class="active">Home</a></li>
+                <li><a href="/capture">Packet Capture</a></li>
+                <li><a href="/ips">IPS Engine</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <section class="dashboard">
+                <h2>Welcome to Baby DPI</h2>
+                <p>Baby DPI is a lightweight tool for network traffic analysis and basic intrusion prevention.</p>
+
+                <div class="feature-cards">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Packet Capture</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>Capture and analyze network packets from interfaces or PCAP files.</p>
+                            <ul>
+                                <li>Protocol detection</li>
+                                <li>Traffic statistics</li>
+                                <li>PCAP file export</li>
+                            </ul>
+                            <a href="/capture" class="btn">Start Capturing</a>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>IPS Engine</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>Monitor for suspicious network traffic with the Intrusion Prevention System.</p>
+                            <ul>
+                                <li>Real-time monitoring</li>
+                                <li>Threat detection</li>
+                                <li>Alert management</li>
+                            </ul>
+                            <a href="/ips" class="btn">Start IPS</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2025 Baby DPI Tool. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
