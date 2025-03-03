@@ -64,7 +64,6 @@ The Baby DPI tool provides two main commands:
 
 ### Capturing Packets
 
-```csharp
 sudo python cli.py capture -i <interface> -c 100
 ```
 
