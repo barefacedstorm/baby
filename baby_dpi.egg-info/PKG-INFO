@@ -1,0 +1,55 @@
+Metadata-Version: 2.2
+Name: baby-dpi
+Version: 0.1.0
+Summary: A lightweight deep packet inspection and IPS utility
+Home-page: https://github.com/barefacedstorm/baby
+Author: Anthony Wagonis
+Author-email: barefaced.code@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: System :: Networking :: Monitoring
+Classifier: Topic :: Security
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: scapy>=2.4.5
+Requires-Dist: dpkt>=1.9.7
+Requires-Dist: netaddr>=0.8.0
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
+# baby - Deep Packet Inspection and IPS Utility
+
+`baby` is a lightweight Python library for deep packet inspection (DPI) and Intrusion Prevention System (IPS) utilities. It provides an easy-to-use interface for analyzing network packets, identifying traffic patterns, and implementing security measures.
+
+## Features
+
+- Deep packet inspection with protocol identification
+- Traffic analysis and pattern matching
+- Intrusion detection capabilities
+- Simple packet capture interface
+- Extensible rule system for threat detection
+
+## Installation
+
+```bash
+pip install baby-dpi
+
+from baby import PacketInspector
+
+# Initialize packet inspector on interface eth0
+inspector = PacketInspector(interface="eth0")
+
+# Set up a simple rule
+inspector.add_rule("http", lambda pkt: "GET" in str(pkt) and "HTTP" in str(pkt))
+
+# Start capturing and analyzing packets
+inspector.start(count=100)  # Capture 100 packets
+
